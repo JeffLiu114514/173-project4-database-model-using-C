@@ -12,16 +12,8 @@ typedef struct CDHList CDHList;
 typedef struct CR CR;
 typedef struct CRList CRList;
 
-struct CSG {
-    char *Course;
-    int StudentId;
-    char *Grade;
-    CSG *nextCSG;
-};
-struct CSGList {
-    CSG **lists;
-};
 
+//SNAP (StudentId-Name-Address-Phone)
 struct SNAP {
     int StudentId;
     char *Name;
@@ -33,49 +25,6 @@ struct SNAPList {
     SNAP **lists;
 };
 
-struct CP {
-    char *Course;
-    char *Prerequisite;
-    CP *nextCP;
-};
-struct CPList {
-    CP **lists;
-};
-
-struct CDH {
-    char *Course;
-    char *Day;
-    char *Hour;
-    CDH *nextCDH;
-};
-struct CDHList {
-    CDH **lists;
-};
-
-struct CR {
-    char *Course;
-    char *Room;
-    CR *nextCR;
-};
-struct CRList {
-    CR **lists;
-};
-//printXX, new_XX, insert_XX, lookup_XX, & delete_XX
-//CSG (Course-StudentId-Grade)
-void printCSG(CSGList *Hashtable);
-
-CSGList *new_CSGList();
-
-CSG *newCSG(char *Course, int StudentId, char *Grade);
-
-void insert_CSG(CSGList *HashTable, char *Course, int StudentId, char *Grade);
-
-void lookup_CSG(CSGList *HashTable, char *Course, int StudentId, char *Grade);
-
-void delete_CSG(CSGList *HashTable, char *Course, int StudentId, char *Grade);
-
-
-//SNAP (StudentId-Name-Address-Phone)
 void printSNAP(SNAPList *Hashtable);
 
 SNAPList *new_SNAPList();
@@ -89,7 +38,40 @@ void lookup_SNAP(SNAPList *HashTable, int StudentId, char *Name, char *Address, 
 void delete_SNAP(SNAPList *HashTable, int StudentId, char *Name, char *Address, char *Phone);
 
 
+//CSG (Course-StudentId-Grade)
+struct CSG {
+    char *Course;
+    int StudentId;
+    char *Grade;
+    CSG *nextCSG;
+};
+struct CSGList {
+    CSG **lists;
+};
+
+void printCSG(CSGList *Hashtable);
+
+CSGList *new_CSGList();
+
+CSG *newCSG(char *Course, int StudentId, char *Grade);
+
+void insert_CSG(CSGList *HashTable, char *Course, int StudentId, char *Grade);
+
+void lookup_CSG(CSGList *HashTable, char *Course, int StudentId, char *Grade);
+
+void delete_CSG(CSGList *HashTable, char *Course, int StudentId, char *Grade);
+
+
 //CP(Course-Prerequisite)
+struct CP {
+    char *Course;
+    char *Prerequisite;
+    CP *nextCP;
+};
+struct CPList {
+    CP **lists;
+};
+
 void printCP(CPList *Hashtable);
 
 CPList *new_CPList();
@@ -104,6 +86,16 @@ void delete_CP(CPList *HashTable, char *Course, char *Prerequisite);
 
 
 //CDH (Course-Day-Hour)
+struct CDH {
+    char *Course;
+    char *Day;
+    char *Hour;
+    CDH *nextCDH;
+};
+struct CDHList {
+    CDH **lists;
+};
+
 void printCDH(CDHList *HashTable);
 
 CDHList *new_CDHList();
@@ -118,6 +110,15 @@ void delete_CDH(CDHList *HashTable, char *Course, char *Day, char *Hour);
 
 
 //CR (Course-Room)
+struct CR {
+    char *Course;
+    char *Room;
+    CR *nextCR;
+};
+struct CRList {
+    CR **lists;
+};
+
 void printCR(CRList *Hashtable);
 
 CRList *new_CRList();
@@ -129,12 +130,14 @@ void insert_CR(CRList *HashTable, char *Course, char *Room);
 void lookup_CR(CRList *HashTable, char *Course, char *Room);
 
 void delete_CR(CRList *HashTable, char *Course, char *Room);
+//printXX, new_XX, insert_XX, lookup_XX, & delete_XX
+
 
 //Hashtable methods
 int hashInt(int key);
 int hashString(char *key);
 
-//Free these relations
+//Free relations
 void freeCSG(CSG *Cf);
 
 void freeSNAP(SNAP *Sf);
