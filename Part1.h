@@ -31,11 +31,11 @@ SNAPList *new_SNAPList();
 
 SNAP *newSNAP(int StudentId, char *Name, char *Address, char *Phone);
 
-void insert_SNAP(SNAPList *HashTable, int StudentId, char *Name, char *Address, char *Phone);
+void insert_SNAP(SNAPList *hashTable, int StudentId, char *Name, char *Address, char *Phone);
 
-void lookup_SNAP(SNAPList *HashTable, int StudentId, char *Name, char *Address, char *Phone);
+void lookup_SNAP(SNAPList *hashTable, int StudentId, char *Name, char *Address, char *Phone);
 
-void delete_SNAP(SNAPList *HashTable, int StudentId, char *Name, char *Address, char *Phone);
+void delete_SNAP(SNAPList *hashTable, int StudentId, char *Name, char *Address, char *Phone);
 
 
 //CSG (Course-StudentId-Grade)
@@ -53,13 +53,13 @@ void printCSG(CSGList *Hashtable);
 
 CSGList *new_CSGList();
 
-CSG *newCSG(char *Course, int StudentId, char *Grade);
+CSG *newCSG(int StudentId, char *Course, char *Grade);
 
-void insert_CSG(CSGList *HashTable, char *Course, int StudentId, char *Grade);
+void insert_CSG(CSGList *hashTable, char *Course, int StudentId, char *Grade);
 
-void lookup_CSG(CSGList *HashTable, char *Course, int StudentId, char *Grade);
+void lookup_CSG(CSGList *hashTable, char *Course, int StudentId, char *Grade);
 
-void delete_CSG(CSGList *HashTable, char *Course, int StudentId, char *Grade);
+void delete_CSG(CSGList *hashTable, char *Course, int StudentId, char *Grade);
 
 
 //CP(Course-Prerequisite)
@@ -78,11 +78,11 @@ CPList *new_CPList();
 
 CP *newCP(char *Course, char *Prerequisite);
 
-void insert_CP(CPList *HashTable, char *Course, char *Prerequisite);
+void insert_CP(CPList *hashTable, char *Course, char *Prerequisite);
 
-void lookup_CP(CPList *HashTable, char *Course, char *Prerequisite);
+void lookup_CP(CPList *hashTable, char *Course, char *Prerequisite);
 
-void delete_CP(CPList *HashTable, char *Course, char *Prerequisite);
+void delete_CP(CPList *hashTable, char *Course, char *Prerequisite);
 
 
 //CDH (Course-Day-Hour)
@@ -96,17 +96,17 @@ struct CDHList {
     CDH **lists;
 };
 
-void printCDH(CDHList *HashTable);
+void printCDH(CDHList *hashTable);
 
 CDHList *new_CDHList();
 
 CDH *newCDH(char *Course, char *Day, char *Hour);
 
-void insert_CDH(CDHList *HashTable, char *Course, char *Day, char *Hour);
+void insert_CDH(CDHList *hashTable, char *Course, char *Day, char *Hour);
 
-void lookup_CDH(CDHList *HashTable, char *Course, char *Day, char *Hour);
+void lookup_CDH(CDHList *hashTable, char *Course, char *Day, char *Hour);
 
-void delete_CDH(CDHList *HashTable, char *Course, char *Day, char *Hour);
+void delete_CDH(CDHList *hashTable, char *Course, char *Day, char *Hour);
 
 
 //CR (Course-Room)
@@ -125,11 +125,11 @@ CRList *new_CRList();
 
 CR *newCR(char *Course, char *Room);
 
-void insert_CR(CRList *HashTable, char *Course, char *Room);
+void insert_CR(CRList *hashTable, char *Course, char *Room);
 
-void lookup_CR(CRList *HashTable, char *Course, char *Room);
+void lookup_CR(CRList *hashTable, char *Course, char *Room);
 
-void delete_CR(CRList *HashTable, char *Course, char *Room);
+void delete_CR(CRList *hashTable, char *Course, char *Room);
 //printXX, new_XX, insert_XX, lookup_XX, & delete_XX
 
 
@@ -138,14 +138,14 @@ int hashInt(int key);
 int hashString(char *key);
 
 //Free relations
-void freeCSG(CSG *Cf);
+void freeSNAP(SNAP *snap);
 
-void freeSNAP(SNAP *Sf);
+void freeCSG(CSG *csg);
 
-void freeCP(CP *CPi);
+void freeCP(CP *cp);
 
-void freeCDH(CDH *CDHi);
+void freeCDH(CDH *cdh);
 
-void freeCR(CR *CRi);
+void freeCR(CR *cr);
 
 #endif //INC_173_PROJ4_PART1_H

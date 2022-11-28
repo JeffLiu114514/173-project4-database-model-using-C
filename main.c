@@ -1,9 +1,19 @@
 #include "Part1.h"
+#include "Part2.h"
+#include "Part3.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
 int main(void) {
+    //////////////////////////// load database ////////////////////////////
+    SNAPList *SNAPHash = new_SNAPList();
+    insert_SNAP(SNAPHash, 11111, "M. Subban", "1 Exchange Blvd", "555-1212");
+    insert_SNAP(SNAPHash, 12345, "R. Zmolek", "2700 B-H Townline Rd", "555-1111");
+    insert_SNAP(SNAPHash, 67890, "P. Tischke", "1 Exchange Blvd", "555-1234");
+    insert_SNAP(SNAPHash, 12321, "P. F. Cedarqvist", "80 Lyndon Rd", "555-2222");
+    insert_SNAP(SNAPHash, 98789, "M. Subban", "123 Ling Rd", "555-3333");
+
     CSGList *CSGHash = new_CSGList();
     insert_CSG(CSGHash, "CSC171", 12345, "A");
     insert_CSG(CSGHash, "CSC171", 67890, "B");
@@ -15,13 +25,6 @@ int main(void) {
     insert_CSG(CSGHash, "CSC173", 12321, "B+");
     insert_CSG(CSGHash, "CSC173", 98789, "A");
     insert_CSG(CSGHash, "DSCC201", 98789, "C");
-
-    SNAPList *SNAPHash = new_SNAPList();
-    insert_SNAP(SNAPHash, 11111, "M. Subban", "1 Exchange Blvd", "555-1212");
-    insert_SNAP(SNAPHash, 12345, "R. Zmolek", "2700 B-H Townline Rd", "555-1111");
-    insert_SNAP(SNAPHash, 67890, "P. Tischke", "1 Exchange Blvd", "555-1234");
-    insert_SNAP(SNAPHash, 12321, "P. F. Cedarqvist", "80 Lyndon Rd", "555-2222");
-    insert_SNAP(SNAPHash, 98789, "M. Subban", "123 Ling Rd", "555-3333");
 
     CPList *CPHash = new_CPList();
     insert_CP(CPHash, "CSC172", "CSC171");
@@ -60,4 +63,59 @@ int main(void) {
     insert_CR(CRHash, "DSCC202", "Dewey 2162");
     insert_CR(CRHash, "DSCC265", "Wegmans 1400");
     insert_CR(CRHash, "MATH150", "Harkness 115");
+
+//    printf("Loading data from Appendix A:\n");
+//    printSNAP(SNAPHash);
+//    printCSG(CSGHash);
+//    printCP(CPHash);
+//    printCDH(CDHHash);
+//    printCR(CRHash);
+    printf("Finished loading data.\n\n");
+
+    //////////////////////////// part1 ////////////////////////////
+    printf("Now showing part1: insert, delete, and lookup\n\n");
+
+    //(a) lookup(<"CSC172", 98789, *>, Course-StudentId-Grade)
+    printf("Now performing:\nlookup(<\"CSC172\", 98789, *>, Course-StudentId-Grade)\n");
+    lookup_CSG(CSGHash, "CSC172", 98789, "*");
+    printf("\n");
+
+    //(b) lookup(<"CSC173", "CSC172">, Course-Prerequisite)
+    printf("Now performing:\nlookup(<\"CSC173\", \"CSC172\">, Course-Prerequisite)\n");
+    lookup_CP(CPHash, "CSC173", "CSC172");
+    printf("\n");
+
+    //(c) delete(<"DSCC201", *, *>, Course-Day-Hour)
+    printf("Now performing:\ndelete(<\"DSCC201\", *, *>, Course-Day-Hour)\n");
+    printf("Before deletion:\n");
+    printCDH(CDHHash);
+    delete_CDH(CDHHash, "DSCC201", "*", "*");
+    printf("After deletion:\n");
+    printCDH(CDHHash);
+    printf("\n");
+
+    //(d) insert(<"CSC280", "CSC173">, Course-Prerequisite)
+    printf("Now performing:\ninsert(<\"CSC280\", \"CSC173\">, Course-Prerequisite)\n");
+    printf("Before insertion:\n");
+    printCP(CPHash);
+    insert_CP(CPHash, "CSC280", "CSC173");
+    printf("After insertion:\n");
+    printCP(CPHash);
+    printf("\n");
+
+    //(e) insert(<"DSCC202", "DSCC201">, Course-Prerequisite)
+    printf("Now performing:\ninsert(<\"DSCC202\", \"DSCC201\">, Course-Prerequisite)\n");
+    printf("Before insertion:\n");
+    printCP(CPHash);
+    insert_CP(CPHash, "DSCC202", "DSCC201");
+    printf("After insertion:\n");
+    printCP(CPHash);
+    printf("\n");
+
+
+    //////////////////////////// part2 ////////////////////////////
+
+
+
+    //////////////////////////// part3 ////////////////////////////
 }
