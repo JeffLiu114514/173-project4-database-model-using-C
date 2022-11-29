@@ -1,5 +1,6 @@
 #ifndef INC_173_PROJ4_PART3_H
 #define INC_173_PROJ4_PART3_H
+#include "Part1.h"
 typedef struct CRDH CRDH;
 typedef struct CRDHList CRDHList;
 

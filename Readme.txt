@@ -10,10 +10,16 @@ gcc -g -o run -std=c99 -Wall -Werror main.c Part1.h Part1.c Part2.h Part2.c Part
 and you can run it by
 ./run.exe
 
+Our code can perfectly execute all required functions in the command line, including
+1. creating the database,
+2. perform five required insert, delete, and lookup operations in part1,
+3. perform two required queries with REPL,
+4. perform four required relational algebra operations.
 
+We have not done any extra credits.
 
-
-In part1, we originally planned to use a simple hash function which is to simple
+Things you might want to know:
+In part1, we originally planned to use a simple hash function which is to simply
 add up the value of char and mod by table size, like
 int hashString(char *key) {
     int temp = 0;
@@ -27,8 +33,5 @@ I made it more complex with reference to djb2 hash function by
 temp = (temp * 33 ^ (int) key[i]) % tableSize;
 so that their hash value won't be the same.
 
-Note that when you are testing part2 requirement2 i.e. “Where is Name at Hour on Day?”
-by entering "R. Zmolek", "M", "900", it yields no result because Zmolek's DSCC201 was
-deleted in part1 by delete(<"DSCC201", *, *>, Course-Day-Hour). We thought it was a bug
-and spent lots of time debugging. Please refer to the database after deletion and
-insertion operation from part1 when testing part2.
+Because part2 requires the database before deletion or insertion, we load data again
+at the beginning of part2.

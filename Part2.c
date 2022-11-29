@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-void GradeStudentCourse(SNAPList *SNAPHash, CSGList *CSGHash, char *studentName, char *course) {
+void getGradeByStudentCourse(SNAPList *SNAPHash, CSGList *CSGHash, char *studentName, char *course) {
     //(1) for each tuple t in StudentId-Name-Address-Phone do
     for (int i = 0; i < tableSize; i++){
         if (SNAPHash->lists[i] != NULL){
@@ -37,7 +37,7 @@ void GradeStudentCourse(SNAPList *SNAPHash, CSGList *CSGHash, char *studentName,
     }
 }
 
-void StudentHourDay(SNAPList *SNAPHash, CSGList *CSGHash, CDHList *CDHHash, CRList *CRHash, char *studentName, char *day, char *hour) {
+void getRoomByStudentHourDay(SNAPList *SNAPHash, CSGList *CSGHash, CDHList *CDHHash, CRList *CRHash, char *studentName, char *day, char *hour) {
     //Traverse SNAP Hashtable
     for (int i = 0; i < tableSize; i++) {
         if (SNAPHash->lists[i] != NULL) {

@@ -73,7 +73,6 @@ SNAP *newSNAP(int StudentId, char *Name, char *Address, char *Phone) {
     SNAPnew->Address = Address;
     SNAPnew->Name = Name;
     SNAPnew->Phone = Phone;
-
     SNAPnew->StudentId = StudentId;
     SNAPnew->nextSNAP = NULL;
     return SNAPnew;
