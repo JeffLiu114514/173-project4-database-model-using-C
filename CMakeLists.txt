@@ -6,4 +6,4 @@ set(CMAKE_C_STANDARD_REQUIRED ON)
 add_compile_options(-Wall -Werror)
 set(CMAKE_VERBOSE_MAKEFILE ON)
 
-add_executable(173_Proj4 main.c Part1.h Part1.c)
+add_executable(173_Proj4 main.c Part1.h Part1.c Part2.h Part2.c Part3.h Part3.c)

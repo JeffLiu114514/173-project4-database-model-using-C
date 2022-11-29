@@ -73,7 +73,7 @@ int main(void) {
     printf("Finished loading data.\n\n");
 
     //////////////////////////// part1 ////////////////////////////
-    printf("Now showing part1: insert, delete, and lookup\n\n");
+    printf("Now showing part 1: insert, delete, and lookup\n\n");
 
     //(a) lookup(<"CSC172", 98789, *>, Course-StudentId-Grade)
     printf("Now performing:\nlookup(<\"CSC172\", 98789, *>, Course-StudentId-Grade)\n");
@@ -114,8 +114,34 @@ int main(void) {
 
 
     //////////////////////////// part2 ////////////////////////////
+    printf("Now showing part 2: query answering with REPL.\n\n");
 
+    printf("This function answers the query of \"What grade did Name get in Course?\"\n");
+    printf("Please enter a student's name & enter \"QUIT\" to quit.\n");
+    char studentName[50]; //FIXME: I guess no need to create new student char for below
+    char courseName[50];
+    scanf("%[^\n]%*c", studentName); //Read until /n
+    while (strcmp(studentName, "QUIT") != 0){
+        printf("Please enter a course name:\n");
+        scanf("%[^\n]%*c", courseName);
+        GradeStudentCourse(SNAPHash, CSGHash, studentName, courseName);
+        printf("Please enter next student name & enter \"QUIT\" to quit.\n");
+        scanf("%[^\n]%*c", studentName);
+    }
 
-
+    printf("This function answers the query of \"Where is Name at Hour on Day?\"\n");
+    printf("Please enter a student's name & enter \"QUIT\" to quit.\n");
+    char day[50];
+    char hour[50];
+    scanf("%[^\n]%*c", studentName);
+    while (strcmp(studentName, "QUIT") != 0){
+        printf("Please enter a day:\n");
+        scanf("%[^\n]%*c", day);
+        printf("Please enter a clock time:\n");
+        scanf("%[^\n]%*c", hour);
+        StudentHourDay(SNAPHash, CSGHash, CDHHash, CRHash, studentName, day, hour);
+        printf("Please enter next student name & enter \"QUIT\" to quit.\n");
+        scanf("%[^\n]%*c", studentName);
+    }
     //////////////////////////// part3 ////////////////////////////
 }
