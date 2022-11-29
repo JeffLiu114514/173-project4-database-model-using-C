@@ -66,12 +66,13 @@ int main(void) {
     insert_CR(CRHash, "MATH150", "Harkness 115");
 
 
-//    printSNAP(SNAPHash);
-//    printCSG(CSGHash);
-//    printCP(CPHash);
-//    printCDH(CDHHash);
-//    printCR(CRHash);
+    printSNAP(SNAPHash);
+    printCSG(CSGHash);
+    printCP(CPHash);
+    printCDH(CDHHash);
+    printCR(CRHash);
 
+//    Test if hash function produces same result for all inputs
 //    printf("%d\n", hashString("CSC171"));
 //    printf("%d\n", hashString("MATH150"));
 //    printf("%d\n", hashString("DSCC201"));
@@ -82,21 +83,24 @@ int main(void) {
 //    printf("%d\n", hashString("DSCC265"));
     printf("Finished loading data.\n\n");
 
+
     //////////////////////////// part1 ////////////////////////////
+
+    printf("//////////////////////////// part1 ////////////////////////////\n");
     printf("Now showing part 1: insert, delete, and lookup\n\n");
 
     //(a) lookup(<"CSC172", 98789, *>, Course-StudentId-Grade)
-    printf("Now performing:\nlookup(<\"CSC172\", 98789, *>, Course-StudentId-Grade)\n");
+    printf("1. Now performing:\nlookup(<\"CSC172\", 98789, *>, Course-StudentId-Grade)\n");
     lookup_CSG(CSGHash, "CSC172", 98789, "*");
     printf("\n");
 
     //(b) lookup(<"CSC173", "CSC172">, Course-Prerequisite)
-    printf("Now performing:\nlookup(<\"CSC173\", \"CSC172\">, Course-Prerequisite)\n");
+    printf("2. Now performing:\nlookup(<\"CSC173\", \"CSC172\">, Course-Prerequisite)\n");
     lookup_CP(CPHash, "CSC173", "CSC172");
     printf("\n");
 
     //(c) delete(<"DSCC201", *, *>, Course-Day-Hour)
-    printf("Now performing:\ndelete(<\"DSCC201\", *, *>, Course-Day-Hour)\n");
+    printf("3. Now performing:\ndelete(<\"DSCC201\", *, *>, Course-Day-Hour)\n");
     printf("Before deletion:\n");
     printCDH(CDHHash);
     delete_CDH(CDHHash, "DSCC201", "*", "*");
@@ -105,7 +109,7 @@ int main(void) {
     printf("\n");
 
     //(d) insert(<"CSC280", "CSC173">, Course-Prerequisite)
-    printf("Now performing:\ninsert(<\"CSC280\", \"CSC173\">, Course-Prerequisite)\n");
+    printf("4. Now performing:\ninsert(<\"CSC280\", \"CSC173\">, Course-Prerequisite)\n");
     printf("Before insertion:\n");
     printCP(CPHash);
     insert_CP(CPHash, "CSC280", "CSC173");
@@ -114,7 +118,7 @@ int main(void) {
     printf("\n");
 
     //(e) insert(<"DSCC202", "DSCC201">, Course-Prerequisite)
-    printf("Now performing:\ninsert(<\"DSCC202\", \"DSCC201\">, Course-Prerequisite)\n");
+    printf("5. Now performing:\ninsert(<\"DSCC202\", \"DSCC201\">, Course-Prerequisite)\n");
     printf("Before insertion:\n");
     printCP(CPHash);
     insert_CP(CPHash, "DSCC202", "DSCC201");
@@ -124,9 +128,11 @@ int main(void) {
 
 
     //////////////////////////// part2 ////////////////////////////
+
+    printf("//////////////////////////// part2 ////////////////////////////\n");
     printf("Now showing part 2: query answering with REPL.\n\n");
 
-    printf("This function answers the query of \"What grade did Name get in Course?\"\n");
+    printf("1. This function answers the query of \"What grade did Name get in Course?\"\n");
     printf("Please enter a student's name & enter \"QUIT\" to quit.\n");
     char studentName[50];
     char courseName[50];
@@ -139,7 +145,7 @@ int main(void) {
         scanf("%[^\n]%*c", studentName);
     }
 
-    printf("This function answers the query of \"Where is Name at Hour on Day?\"\n");
+    printf("2. This function answers the query of \"Where is Name at Hour on Day?\"\n");
     printf("Please enter a student's name & enter \"QUIT\" to quit.\n");
     char studentNameNew[50];
     char day[50];
@@ -158,32 +164,27 @@ int main(void) {
     //StudentHourDay(SNAPHash, CSGHash, CDHHash, CRHash, "P. Tischke", "T", "1400");
 
     //////////////////////////// part3 ////////////////////////////
+
+    printf("//////////////////////////// part3 ////////////////////////////\n");
     printf("Now showing part 3: Implementing the Relational Algebra operations.\n");
-    printf("1. Selection: StudentId = 67800\n");
-    printf("Two tuples that has StudentId of 67800 should be printed.\n");
+    printf("1. Selection: StudentId = 67800 in CSG:\n");
     printCSG(selection_CSG(CSGHash, 67890));
     printf("\n");
 
-    printf("2. Projection of Course of example 1:\n");
+    printf("2. Projection of Course on (selected tuples with StudentId = 67800 in CSG):\n");
     projection_CSG(selection_CSG(CSGHash, 67890), "Course");
     printf("\n");
 
     printf("3. Join of CR & CDH:\n");
-    printf("Printing a table joining CR and CDH.\n");
+    printf("Printing a relation CRDH joining CR and CDH.\n");
     printCRDH(joinCRDH(CRHash, CDHHash));
     printf("\n");
 
-/*
     printf("4. All of above:\n");
+    printf("Project Day and Hour of (Selection Room = Wegmans 1400 in (joint relation between CR and CDH))\n");
+    allOperation(CRHash, CDHHash, "Wegmans 1400", "Day", "Hour");
+    printf("\n");
 
-*/
-
-    char exitInput[50];
-    printf("Please enter EXIT to exit.\n");
-    scanf("%[^\n]%*c", exitInput);
-    while (strcmp(studentNameNew, "EXIT") == 0){
-        printf("Please enter EXIT to exit.\n");
-        scanf("%[^\n]%*c", exitInput);
-    }
+    printf("All required test cases are performed. Exiting.");
     exit(EXIT_SUCCESS);
 }

@@ -12,7 +12,7 @@ typedef struct CDHList CDHList;
 typedef struct CR CR;
 typedef struct CRList CRList;
 
-
+extern const int tableSize;
 //SNAP (StudentId-Name-Address-Phone)
 struct SNAP {
     int StudentId;

@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-int tableSize = 50;
+const int tableSize = 50;
 
 //hashTable methods
 int hashInt(int key) {
@@ -20,13 +20,18 @@ int hashString(char *key) {
 
 //SNAP (StudentId-Name-Address-Phone)
 void printSNAP(SNAPList *hashTable) {
-    printf("StudentId\tName\t\tAddress\t\tPhone\n");
+    printf("StudentId\tName\t\t\tAddress\t\t\t\tPhone\n");
     for (int i = 0; i < tableSize; i++) {
         if (hashTable->lists[i] != NULL) {
             SNAP *SNAPtobePrinted = hashTable->lists[i];
             while (SNAPtobePrinted != NULL) {
-                printf("%d\t\t%s\t\t%s\t\t%s\n", SNAPtobePrinted->StudentId, SNAPtobePrinted->Name,
-                       SNAPtobePrinted->Address, SNAPtobePrinted->Phone);
+                if (strcmp(SNAPtobePrinted->Address, "2700 B-H Townline Rd") == 0) {
+                    printf("%d\t\t%s\t\t%s\t\t%s\n", SNAPtobePrinted->StudentId, SNAPtobePrinted->Name,
+                           SNAPtobePrinted->Address, SNAPtobePrinted->Phone);
+                } else {
+                    printf("%d\t\t%s\t\t%s\t\t\t%s\n", SNAPtobePrinted->StudentId, SNAPtobePrinted->Name,
+                           SNAPtobePrinted->Address, SNAPtobePrinted->Phone);
+                }
                 SNAPtobePrinted = SNAPtobePrinted->nextSNAP;
             }
         }
