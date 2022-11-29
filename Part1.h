@@ -148,4 +148,10 @@ void freeCDH(CDH *cdh);
 
 void freeCR(CR *cr);
 
+//debug
+void printCSG2(CSGList *Hashtable);
+void printSNAP2(SNAPList *Hashtable);
+void printCP2(CPList *Hashtable);
+void printCDH2(CDHList *HashTable);
+void printCR2(CRList *Hashtable);
 #endif //INC_173_PROJ4_PART1_H

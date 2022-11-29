@@ -7,6 +7,7 @@
 
 int main(void) {
     //////////////////////////// load database ////////////////////////////
+    printf("Loading data from Appendix A:\n");
     SNAPList *SNAPHash = new_SNAPList();
     insert_SNAP(SNAPHash, 11111, "M. Subban", "1 Exchange Blvd", "555-1212");
     insert_SNAP(SNAPHash, 12345, "R. Zmolek", "2700 B-H Townline Rd", "555-1111");
@@ -64,7 +65,7 @@ int main(void) {
     insert_CR(CRHash, "DSCC265", "Wegmans 1400");
     insert_CR(CRHash, "MATH150", "Harkness 115");
 
-//    printf("Loading data from Appendix A:\n");
+
 //    printSNAP(SNAPHash);
 //    printCSG(CSGHash);
 //    printCP(CPHash);

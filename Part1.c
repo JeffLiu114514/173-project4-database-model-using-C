@@ -34,6 +34,22 @@ void printSNAP(SNAPList *hashTable) {
     printf("\n");
 }
 
+void printSNAP2(SNAPList *hashTable) {
+    printf("StudentId\tName\t\tAddress\t\tPhone\n");
+    for (int i = 0; i < tableSize; i++) {
+        if (hashTable->lists[i] != NULL) {
+            SNAP *SNAPtobePrinted = hashTable->lists[i];
+            while (SNAPtobePrinted != NULL) {
+                printf("%d\t\t%s\t\t%s\t\t%s\t\t", SNAPtobePrinted->StudentId, SNAPtobePrinted->Name,
+                       SNAPtobePrinted->Address, SNAPtobePrinted->Phone);
+                SNAPtobePrinted = SNAPtobePrinted->nextSNAP;
+            }
+            printf("\n");
+        }
+    }
+    printf("\n");
+}
+
 SNAPList *new_SNAPList() {
     SNAPList *hashTable = (SNAPList *) malloc(sizeof(SNAPList));
     hashTable->lists = (SNAP **) malloc(sizeof(SNAP *) * tableSize);
@@ -171,6 +187,21 @@ void printCSG(CSGList *hashTable) {
     printf("\n");
 }
 
+void printCSG2(CSGList *hashTable) {
+    printf("StudentId\tCourse\tGrade\n");
+    for (int i = 0; i < tableSize; i++) {
+        if (hashTable->lists[i] != NULL) {
+            CSG *CSGtobePrinted = hashTable->lists[i];
+            while (CSGtobePrinted != NULL) {
+                printf("%d\t\t%s\t%s\t\t", CSGtobePrinted->StudentId, CSGtobePrinted->Course, CSGtobePrinted->Grade);
+                CSGtobePrinted = CSGtobePrinted->nextCSG;
+            }
+            printf("\n");
+        }
+    }
+    printf("\n");
+}
+
 CSGList *new_CSGList() {
     CSGList *hashTable = (CSGList *) malloc(sizeof(CSGList));
     hashTable->lists = (CSG **) malloc(sizeof(CSG *) * tableSize);
@@ -295,6 +326,21 @@ void printCP(CPList *hashTable) {
     printf("\n");
 }
 
+void printCP2(CPList *hashTable) {
+    printf("Course\tPrerequisite\n");
+    for (int i = 0; i < tableSize; i++) {
+        if (hashTable->lists[i] != NULL) {
+            CP *CPtobePrinted = hashTable->lists[i];
+            while (CPtobePrinted != NULL) {
+                printf("%s\t%s\t\t", CPtobePrinted->Course, CPtobePrinted->Prerequisite);
+                CPtobePrinted = CPtobePrinted->nextCP;
+            }
+            printf("\n");
+        }
+    }
+    printf("\n");
+}
+
 CPList *new_CPList() {
     CPList *hashTable = (CPList *) malloc(sizeof(CPList));
     hashTable->lists = (CP **) malloc(sizeof(CP *) * tableSize);
@@ -408,6 +454,21 @@ void printCDH(CDHList *hashTable) {
     printf("\n");
 }
 
+void printCDH2(CDHList *hashTable) {
+    printf("Course\tDay\tHour\n");
+    for (int i = 0; i < tableSize; i++) {
+        if (hashTable->lists[i] != NULL) {
+            CDH *CDHtobePrinted = hashTable->lists[i];
+            while (CDHtobePrinted != NULL) {
+                printf("%s\t%s\t%s\t\t", CDHtobePrinted->Course, CDHtobePrinted->Day, CDHtobePrinted->Hour);
+                CDHtobePrinted = CDHtobePrinted->nextCDH;
+            }
+            printf("\n");
+        }
+    }
+    printf("\n");
+}
+
 CDHList *new_CDHList() {
     CDHList *hashTable = (CDHList *) malloc(sizeof(CDHList));
     hashTable->lists = (CDH **) malloc(sizeof(CP *) * tableSize);
@@ -490,6 +551,7 @@ void delete_CDH(CDHList *hashTable, char *Course, char *Day, char *Hour) {
             }
             if (currentCDH->nextCDH == NULL && bucketIndex != 0) {
                 previousCDH->nextCDH = NULL;
+                hashTable->lists[hash] = NULL;
             }
             if (currentCDH->nextCDH != NULL && bucketIndex != 0) {
                 previousCDH->nextCDH = previousCDH->nextCDH;
@@ -523,6 +585,21 @@ void printCR(CRList *hashTable) {
                 printf("%s\t%s\n", COut->Course, COut->Room);
                 COut = COut->nextCR;
             }
+        }
+    }
+    printf("\n");
+}
+
+void printCR2(CRList *hashTable) {
+    printf("Course\tRoom\n");
+    for (int i = 0; i < tableSize; i++) {
+        if (hashTable->lists[i] != NULL) {
+            CR *COut = hashTable->lists[i];
+            while (COut != NULL) {
+                printf("%s\t%s\t\t", COut->Course, COut->Room);
+                COut = COut->nextCR;
+            }
+            printf("\n");
         }
     }
     printf("\n");
