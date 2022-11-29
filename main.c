@@ -70,6 +70,15 @@ int main(void) {
 //    printCP(CPHash);
 //    printCDH(CDHHash);
 //    printCR(CRHash);
+
+//    printf("%d\n", hashString("CSC171"));
+//    printf("%d\n", hashString("MATH150"));
+//    printf("%d\n", hashString("DSCC201"));
+//    printf("%d\n", hashString("CSC172"));
+//    printf("%d\n", hashString("CSC173"));
+//    printf("%d\n", hashString("CSC252"));
+//    printf("%d\n", hashString("DSCC202"));
+//    printf("%d\n", hashString("DSCC265"));
     printf("Finished loading data.\n\n");
 
     //////////////////////////// part1 ////////////////////////////
@@ -144,5 +153,7 @@ int main(void) {
         printf("Please enter next student name & enter \"QUIT\" to quit.\n");
         scanf("%[^\n]%*c", studentNameNew);
     }
+
+    StudentHourDay(SNAPHash, CSGHash, CDHHash, CRHash, "P. Tischke", "T", "1400");
     //////////////////////////// part3 ////////////////////////////
 }
