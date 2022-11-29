@@ -176,7 +176,6 @@ int main(void) {
 /*
     printf("4. All of above:\n");
 
-    jointOperation(CRHash, CDHHash, "Turing Aud.", "Day", "Hour");
 */
 
     char exitInput[50];

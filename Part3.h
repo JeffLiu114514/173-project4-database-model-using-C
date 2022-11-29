@@ -26,7 +26,4 @@ void projection_CRDH(CRDHList *CRDHHash, char *type, char *type2);
 
 CRDHList *selection_CRDH(CRDHList *CRDHHash, char *Room);
 
-void jointOperation(CRList *CRHash, CDHList *CDHHash, char *Room, char *type1, char *type2);
-
-void freeCRDH(CRDH *CRDHi);
 #endif //INC_173_PROJ4_PART3_H
