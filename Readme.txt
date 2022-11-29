@@ -1,3 +1,17 @@
+CSC173 project2
+Junfei Liu
+jliu137@u.rochester.edu
+
+I collaborate with Dingcheng Wang (dwang63@u.rochester.edu)
+
+Our code can be compiled by
+gcc -g -o run -std=c99 -Wall -Werror main.c Part1.h Part1.c Part2.h Part2.c Part3.h Part3.c
+
+and you can run it by
+./run.exe
+
+
+
 
 In part1, we originally planned to use a simple hash function which is to simple
 add up the value of char and mod by table size, like
