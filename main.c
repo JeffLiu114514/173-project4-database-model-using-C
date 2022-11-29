@@ -12,7 +12,7 @@ int main(void) {
     insert_SNAP(SNAPHash, 11111, "M. Subban", "1 Exchange Blvd", "555-1212");
     insert_SNAP(SNAPHash, 12345, "R. Zmolek", "2700 B-H Townline Rd", "555-1111");
     insert_SNAP(SNAPHash, 67890, "P. Tischke", "1 Exchange Blvd", "555-1234");
-    insert_SNAP(SNAPHash, 12321, "P. F. Cedarqvist", "80 Lyndon Rd", "555-2222");
+    insert_SNAP(SNAPHash, 12321, "F. Cedarqvist", "80 Lyndon Rd", "555-2222");
     insert_SNAP(SNAPHash, 98789, "M. Subban", "123 Ling Rd", "555-3333");
 
     CSGList *CSGHash = new_CSGList();
@@ -80,6 +80,7 @@ int main(void) {
 //    printf("%d\n", hashString("CSC252"));
 //    printf("%d\n", hashString("DSCC202"));
 //    printf("%d\n", hashString("DSCC265"));
+//    printf("%d\n", hashString("CSC280"));
     printf("Finished loading data.\n\n");
 
     //////////////////////////// part1 ////////////////////////////
@@ -155,6 +156,6 @@ int main(void) {
         scanf("%[^\n]%*c", studentNameNew);
     }
 
-    StudentHourDay(SNAPHash, CSGHash, CDHHash, CRHash, "P. Tischke", "T", "1400");
+    //StudentHourDay(SNAPHash, CSGHash, CDHHash, CRHash, "R. Zmolek", "M", "900");
     //////////////////////////// part3 ////////////////////////////
 }
