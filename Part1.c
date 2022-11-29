@@ -13,7 +13,7 @@ int hashInt(int key) {
 int hashString(char *key) {
     int temp = 0;
     for (int i = 0; i < strlen(key); i++) {
-        temp = temp + (int) key[i];
+        temp = (temp + (int) key[i] * 33) % tableSize;
     }
     return temp % tableSize;
 }
