@@ -118,7 +118,7 @@ int main(void) {
 
     printf("This function answers the query of \"What grade did Name get in Course?\"\n");
     printf("Please enter a student's name & enter \"QUIT\" to quit.\n");
-    char studentName[50]; //FIXME: I guess no need to create new student char for below
+    char studentName[50];
     char courseName[50];
     scanf("%[^\n]%*c", studentName); //Read until /n
     while (strcmp(studentName, "QUIT") != 0){
@@ -131,17 +131,18 @@ int main(void) {
 
     printf("This function answers the query of \"Where is Name at Hour on Day?\"\n");
     printf("Please enter a student's name & enter \"QUIT\" to quit.\n");
+    char studentNameNew[50];
     char day[50];
     char hour[50];
-    scanf("%[^\n]%*c", studentName);
-    while (strcmp(studentName, "QUIT") != 0){
+    scanf("%[^\n]%*c", studentNameNew);
+    while (strcmp(studentNameNew, "QUIT") != 0){
         printf("Please enter a day:\n");
         scanf("%[^\n]%*c", day);
         printf("Please enter a clock time:\n");
         scanf("%[^\n]%*c", hour);
-        StudentHourDay(SNAPHash, CSGHash, CDHHash, CRHash, studentName, day, hour);
+        StudentHourDay(SNAPHash, CSGHash, CDHHash, CRHash, studentNameNew, day, hour);
         printf("Please enter next student name & enter \"QUIT\" to quit.\n");
-        scanf("%[^\n]%*c", studentName);
+        scanf("%[^\n]%*c", studentNameNew);
     }
     //////////////////////////// part3 ////////////////////////////
 }

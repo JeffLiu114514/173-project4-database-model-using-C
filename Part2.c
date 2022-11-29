@@ -3,10 +3,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-/*
-
-
- * */
 void GradeStudentCourse(SNAPList *SNAPHash, CSGList *CSGHash, char *studentName, char *course) {
     //(1) for each tuple t in StudentId-Name-Address-Phone do
     for (int i = 0; i < 50; i++){
@@ -41,5 +37,47 @@ void GradeStudentCourse(SNAPList *SNAPHash, CSGList *CSGHash, char *studentName,
 }
 
 void StudentHourDay(SNAPList *SNAPHash, CSGList *CSGHash, CDHList *CDHHash, CRList *CRHash, char *studentName, char *day, char *hour) {
+    //Traverse SNAP Hashtable
+    for (int i = 0; i < 50; i++) {
+        if (SNAPHash->lists[i] != NULL) {
+            SNAP *viewSNAP = SNAPHash->lists[i];
+            while (viewSNAP != NULL) {
+                //Found the name!
+                if (strcmp(viewSNAP->Name, studentName) == 0) {
+                    int viewId = viewSNAP->StudentId;
 
+                    //Traverse CSG Hashtable
+                    for (int j = 0; j < 50; j++) {
+                        if (CSGHash->lists[j] != NULL) {
+                            CSG *viewCSG = CSGHash->lists[j];
+                            while (viewCSG != NULL) {
+                                if(viewCSG->StudentId == viewId){
+                                    char *courseName = viewCSG->Course;
+
+                                    //Traverse CDH Hashtable
+                                    for (int k = 0; k < 50; k++) {
+                                        if(CDHHash->lists[k] != NULL){
+                                            CDH *viewCDH = CDHHash->lists[k];
+                                            while (viewCDH != NULL) {
+                                                //We have found the one matches all the course, day, & hour!
+                                                if (strcmp(viewCDH->Course, courseName) == 0 &&
+                                                    strcmp(viewCDH->Day, day) == 0 && strcmp(viewCDH->Hour, hour) == 0) {
+                                                    lookup_CR(CRHash, courseName, "*");
+                                                    printf("\n");
+                                                    return;
+                                                }
+                                                viewCDH = viewCDH->nextCDH;
+                                            }
+                                        }
+                                    }
+                                }
+                                viewCSG = viewCSG->nextCSG;
+                            }
+                        }
+                    }
+                }
+                viewSNAP = viewSNAP->nextSNAP;
+            }
+        }
+    }
 }
