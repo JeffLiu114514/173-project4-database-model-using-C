@@ -12,7 +12,7 @@ int main(void) {
     insert_SNAP(SNAPHash, 11111, "M. Subban", "1 Exchange Blvd", "555-1212");
     insert_SNAP(SNAPHash, 12345, "R. Zmolek", "2700 B-H Townline Rd", "555-1111");
     insert_SNAP(SNAPHash, 67890, "P. Tischke", "1 Exchange Blvd", "555-1234");
-    insert_SNAP(SNAPHash, 12321, "P. F. Cedarqvist", "80 Lyndon Rd", "555-2222");
+    insert_SNAP(SNAPHash, 12321, "F. Cedarqvist", "80 Lyndon Rd", "555-2222");
     insert_SNAP(SNAPHash, 98789, "M. Subban", "123 Ling Rd", "555-3333");
 
     CSGList *CSGHash = new_CSGList();
@@ -155,6 +155,36 @@ int main(void) {
         scanf("%[^\n]%*c", studentNameNew);
     }
 
-    StudentHourDay(SNAPHash, CSGHash, CDHHash, CRHash, "P. Tischke", "T", "1400");
+    //StudentHourDay(SNAPHash, CSGHash, CDHHash, CRHash, "P. Tischke", "T", "1400");
+
     //////////////////////////// part3 ////////////////////////////
+    printf("Now showing part 3: Implementing the Relational Algebra operations.\n");
+    printf("1. Selection: StudentId = 67800\n");
+    printf("Two tuples that has StudentId of 67800 should be printed.\n");
+    printCSG(selection_CSG(CSGHash, 67890));
+    printf("\n");
+
+    printf("2. Projection of Course of example 1:\n");
+    projection_CSG(selection_CSG(CSGHash, 67890), "Course");
+    printf("\n");
+
+    printf("3. Join of CR & CDH:\n");
+    printf("Printing a table joining CR and CDH.\n");
+    printCRDH(joinCRDH(CRHash, CDHHash));
+    printf("\n");
+
+/*
+    printf("4. All of above:\n");
+
+    jointOperation(CRHash, CDHHash, "Turing Aud.", "Day", "Hour");
+*/
+
+    char exitInput[50];
+    printf("Please enter EXIT to exit.\n");
+    scanf("%[^\n]%*c", exitInput);
+    while (strcmp(studentNameNew, "EXIT") == 0){
+        printf("Please enter EXIT to exit.\n");
+        scanf("%[^\n]%*c", exitInput);
+    }
+    exit(EXIT_SUCCESS);
 }

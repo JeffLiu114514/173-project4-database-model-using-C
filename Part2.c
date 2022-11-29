@@ -23,7 +23,7 @@ void GradeStudentCourse(SNAPList *SNAPHash, CSGList *CSGHash, char *studentName,
                                 if (strcmp(viewCSG->Course, course) == 0 && viewCSG->StudentId == viewId) {
                                     //(6) print the Grade component of tuple s;
                                     printf("Grade is: %s\n", viewCSG->Grade);
-                                    return;
+                                    break;
                                 }
                                 viewCSG = viewCSG->nextCSG;
                             }
@@ -42,7 +42,7 @@ void StudentHourDay(SNAPList *SNAPHash, CSGList *CSGHash, CDHList *CDHHash, CRLi
         if (SNAPHash->lists[i] != NULL) {
             SNAP *viewSNAP = SNAPHash->lists[i];
             while (viewSNAP != NULL) {
-                //Found the name!
+                //Found the name! So found the StudentId
                 if (strcmp(viewSNAP->Name, studentName) == 0) {
                     int viewId = viewSNAP->StudentId;
 
@@ -63,8 +63,7 @@ void StudentHourDay(SNAPList *SNAPHash, CSGList *CSGHash, CDHList *CDHHash, CRLi
                                                 if (strcmp(viewCDH->Course, courseName) == 0 &&
                                                     strcmp(viewCDH->Day, day) == 0 && strcmp(viewCDH->Hour, hour) == 0) {
                                                     lookup_CR(CRHash, courseName, "*");
-                                                    printf("\n");
-                                                    return;
+                                                    //break;
                                                 }
                                                 viewCDH = viewCDH->nextCDH;
                                             }
